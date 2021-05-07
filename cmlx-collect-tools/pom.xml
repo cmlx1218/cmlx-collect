@@ -11,5 +11,8 @@
     <packaging>pom</packaging>
     <artifactId>cmlx-collect-tools</artifactId>
 
+    <modules>
+        <module>cmlx-collect-commons</module>
+    </modules>
 
 </project>
