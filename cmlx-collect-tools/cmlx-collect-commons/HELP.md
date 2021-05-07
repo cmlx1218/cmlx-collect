@@ -3,7 +3,7 @@
 ### Spring相关封装(SpringExtension)
 
 ##### &emsp;一、返回值包装面板(MVF)
-![binaryTree](./zimage/MVF.png "binaryTree")
+![github](https://github.com/cmlx1218/cmlx-collect/blob/master/cmlx-collect-tools/cmlx-collect-commons/MVF.png)
 
 
 
