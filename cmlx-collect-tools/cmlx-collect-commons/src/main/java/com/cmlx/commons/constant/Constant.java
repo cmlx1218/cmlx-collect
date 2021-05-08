@@ -1,5 +1,10 @@
 package com.cmlx.commons.constant;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+import java.util.HashMap;
+
 /**
  * @Author CMLX
  * @Date -> 2021/5/7 14:33
@@ -66,6 +71,32 @@ public class Constant {
         EntryByQRCode, //5-扫码加入
 
     }
+
+    @Getter
+    @AllArgsConstructor
+    public enum Sex {
+        Man(1, "男"),
+        WOMAN(2, "女");
+
+        public Integer code;
+        public String msg;
+
+        private static HashMap<Integer, Sex> data = new HashMap<>();
+
+        static {
+            for (Sex d : Sex.values()) {
+                data.put(d.code, d);
+            }
+        }
+
+        public static Sex parse(Integer code) {
+            if (data.containsKey(code)) {
+                return data.get(code);
+            }
+            return null;
+        }
+    }
+
 
 
 }
