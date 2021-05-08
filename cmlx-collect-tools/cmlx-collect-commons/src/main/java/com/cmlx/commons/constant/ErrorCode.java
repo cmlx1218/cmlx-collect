@@ -28,6 +28,11 @@ public enum ErrorCode {
     ResourceNotFound(404),
 
     /**
+     * 服务端HTTP请求错误
+     */
+    HttpRequestError(503),
+
+    /**
      * 请求冲突或数据库唯一冲突
      */
     Conflict(301),
