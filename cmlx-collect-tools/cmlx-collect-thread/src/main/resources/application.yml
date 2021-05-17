@@ -1,0 +1,15 @@
+server:
+  port: 8989
+
+# Spring线程池异步线程相关配置
+async:
+  executor:
+    thread:
+      # 核心线程数
+      core_pool_size: 5
+      # 最大线程数
+      max_pool_size: 5
+      # 队列大小
+      queue_capacity: 99999
+      name:
+        prefix: async-service-
