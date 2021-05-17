@@ -1,2 +1,23 @@
 server:
   port: 5269
+
+# redis相关配置
+spring:
+  redis:
+    session:
+      enabled: true
+    packages-to-scan: "com.cmlx"
+    expired-time: 3600
+    page-size: 20
+    host: "10.0.1.13"
+    port: 6379
+    database: 3
+    lettuce:
+      pool:
+        max-active: -1
+        min-idle: 100
+        max-idle: 100
+        max-wait: 1000
+    password: "111111"
+    timeout: 10000
+

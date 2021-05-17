@@ -18,6 +18,11 @@ public enum ErrorCode {
     DriversHeader(306),
 
     /**
+     * 分布式锁处理中
+     */
+    InProgress(335),
+
+    /**
      * 解析URL失败
      */
     ErrorResolveUrl(347),
@@ -31,6 +36,11 @@ public enum ErrorCode {
      * 服务端HTTP请求错误
      */
     HttpRequestError(503),
+
+    /**
+     * 获取缓存锁异常
+     */
+    CacheLockError(504),
 
     /**
      * 请求冲突或数据库唯一冲突
