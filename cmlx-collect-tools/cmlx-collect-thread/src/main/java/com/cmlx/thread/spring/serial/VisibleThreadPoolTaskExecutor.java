@@ -11,7 +11,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 /**
  * @Author CMLX
  * @Date -> 2021/5/17 17:57
- * @Desc -> 答应线程池相关信息
+ * @Desc -> 打印线程池相关信息
  **/
 @Slf4j
 public class VisibleThreadPoolTaskExecutor extends ThreadPoolTaskExecutor {

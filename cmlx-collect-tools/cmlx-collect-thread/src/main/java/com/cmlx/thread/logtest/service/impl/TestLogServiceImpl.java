@@ -4,6 +4,7 @@ import com.cmlx.thread.logtest.persist.entity.LogBean;
 import com.cmlx.thread.logtest.persist.repository.LogBeanRepository;
 import com.cmlx.thread.logtest.service.ITestLogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  * @Date -> 2021/5/18 10:48
  * @Desc ->
  **/
+@Service
 public class TestLogServiceImpl implements ITestLogService {
 
     @Autowired
