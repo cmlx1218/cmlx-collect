@@ -15,6 +15,7 @@
         <module>cmlx-collect-commons</module>
         <module>cmlx-collect-redis</module>
         <module>cmlx-collect-thread</module>
+        <module>cmlx-collect-annotation</module>
     </modules>
 
 </project>
