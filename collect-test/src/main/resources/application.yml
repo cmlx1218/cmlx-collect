@@ -1,7 +1,7 @@
 server:
   port: 5269
 
-# redis相关配置
+#redis相关配置
 spring:
   redis:
     session:
@@ -9,15 +9,30 @@ spring:
     packages-to-scan: "com.cmlx"
     expired-time: 3600
     page-size: 20
-    host: "10.0.1.13"
+    #    host: "10.0.1.13"
+    cluster:
+      nodes: 192.168.10.101:8001,192.168.10.102:8002,192.168.10.103:8003,192.168.10.101:8004,192.168.10.102:8005,192.168.10.103:8006
     port: 6379
-    database: 3
+    database: 1
     lettuce:
       pool:
         max-active: -1
         min-idle: 100
         max-idle: 100
         max-wait: 1000
-    password: "111111"
+    password: "cmlx1218"
     timeout: 10000
 
+#spring:
+#  # redis相关cluster
+#  redis:
+#    password: cmlx1218
+#    timeout: 5000
+#    cluster:
+#      nodes: 192.168.10.101:8001,192.168.10.102:8002,192.168.10.103:8003,192.168.10.101:8004,192.168.10.102:8005,192.168.10.103:8006
+#    jedis:
+#      pool:
+#        max-active: 1000
+#        max-wait: -1ms
+#        max-idle: 10
+#        min-idle: 5
