@@ -1,0 +1,7 @@
+mqtt:
+  broker-url: tcp://192.168.10.103:1883
+  client-id: mqtt_cmlx_cloud
+  username: admin
+  password: public
+server:
+  port: 8081
