@@ -1,0 +1,35 @@
+    @RequestMapping(value = "/importExcel", method = RequestMethod.POST)
+    public Result<?> importExcel(HttpServletRequest request, String sheetName) {
+        MultipartHttpServletRequest multipartRequest = null;
+        if (request instanceof MultipartHttpServletRequest) {
+            multipartRequest = (MultipartHttpServletRequest) (request);
+            List<HealthCareEntity> list = iHealthCareService.importExcel(multipartRequest, sheetName);
+            return Result.OK(list);
+        }
+        return Result.error("导入失败");
+    }
+
+    @Transactional
+    public List<HealthCareEntity> importExcel(MultipartHttpServletRequest multipartRequest, String sheetName) {
+        // 1、读取Excel数据
+        Map<String, MultipartFile> fileMap = multipartRequest.getFileMap();
+        Iterator iterable = fileMap.entrySet().iterator();
+        if (iterable.hasNext()) {
+            Map.Entry<String, MultipartFile> entry = (Map.Entry) iterable.next();
+            MultipartFile file = entry.getValue();
+            List<HealthCareEntity> healthCareEntities = ExcelUtils.read(file, HealthCareEntity.class, sheetName);
+            if (null != healthCareEntities) {
+                // 2、入库
+                super.baseMapper.insertBatch(healthCareEntities);
+//            super.saveOrUpdateBatch(healthCareEntities, ExampleConstant.MYBATIS_BATCH_SIZE);
+                // 3、整合医保到五险详情，后续考虑异步处理
+                List<HealthCareEntity> largeMedicalList = healthCareEntities.stream().filter((HealthCareEntity entity) -> "0".equals(entity.getInsuranceType())).collect(Collectors.toList());
+                List<HealthCareEntity> basicMedicalList = healthCareEntities.stream().filter((HealthCareEntity entity) -> "1".equals(entity.getInsuranceType())).collect(Collectors.toList());
+                iSocialSalaryService.insertBatchLargeMedical(largeMedicalList);
+                iSocialSalaryService.insertBatchBasicMedical(basicMedicalList);
+                return healthCareEntities;
+            }
+        }
+        return null;
+    }
+}
