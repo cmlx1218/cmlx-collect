@@ -59,7 +59,12 @@ public enum ErrorCode {
     /**
      * 服务器异常
      */
-    Server(500);
+    Server(500),
+
+    /**
+     * 重复请求
+     */
+    REPEATED_REQUESTS(900);
 
     private static final String PREFIX = "{com.cmlx.exception.";
     private static final String SUFFIX = ".message}";
